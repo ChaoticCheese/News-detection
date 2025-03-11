@@ -1,55 +1,39 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Denglu from '../views/UserLogin.vue'; 
-import HomePage from '../views/HomePage.vue';
-import PersonalCenter from '../views/PersonalCenter.vue';
-import NewsAlgorithm from '../views/NewsAlgorithm.vue';
-import HomeView from '../views/HomeView.vue';
-import TextDetection from '../views/TextDetection';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    
     path: '/',
-    redirect:"/denglu"
+    name: 'Home',
+    component: () => import('@/views/HomePage.vue')
   },
   {
-    
-    path: '/denglu',
-    name: 'Denglu',
-    component: Denglu
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/UserLogin.vue')
   },
   {
-    
-    path: '/homepage',
-    name: 'HomePage',
-    component: HomePage
+    path: '/homeview',
+    name: 'HomeView',
+    component: () => import('@/views/HomeView.vue')
   },
   {
-    
-    path: '/personalcenter',
-    name: 'PersonalCenter',
-    component: PersonalCenter
+    path: '/algorithm',
+    name: 'Algorithm',
+    component: () => import('@/views/NewsAlgorithm.vue')
   },
   {
-    
-    path: '/NewsAlgorithm',
-    name: 'NewsAlgorithm',
-    component: NewsAlgorithm
-  },
-  {
-      path: '/HomeView',
-      name: 'HomeView',
-      component: HomeView
-  },
-  {
-    path: '/TextDetection',
+    path: '/text-detection',
     name: 'TextDetection',
-    component: TextDetection
-},
-  
+    component: () => import('@/views/TextDetection.vue')
+  },
+  {
+    path: '/percenal',
+    name: 'percenal',
+    component: () => import('@/views/PersonalCenter.vue')
+  }
 ];
 
 const router = new VueRouter({

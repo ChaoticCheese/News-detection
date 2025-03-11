@@ -7,6 +7,7 @@
       background-color="#00152A"
       text-color="#fff"
       active-text-color="#409EFF"
+      @select="handleSelect" 
     >
       <div class="nav-content">
         <!-- 左侧Logo -->
@@ -17,9 +18,9 @@
   
         <!-- 右侧导航项 -->
         <div class="menu-items">
-          <el-menu-item index="1">首页</el-menu-item>
-          <el-menu-item index="2">产品功能</el-menu-item>
-          <el-menu-item index="3">算法介绍</el-menu-item>
+          <el-menu-item index="/">首页</el-menu-item>
+          <el-menu-item index="/homeview">产品功能</el-menu-item>
+          <el-menu-item index="/algorithm">算法介绍</el-menu-item>
           <el-menu-item index="4">
             <el-dropdown>
               <span class="user-center">
@@ -42,11 +43,22 @@
   export default {
     data() {
       return {
-        activeIndex: '1',
+        activeIndex: '/',
         userAvatar: require('@/assets/default-avatar.png')
       }
     },
+    watch: {
+    $route(to) {
+      this.activeIndex = to.path
+    }
+  },
     methods: {
+      handleSelect(index) {
+      // if (index !== 'user') {
+      //   this.$router.push(index)
+      // }
+      this.$router.push(index);
+    },
       logout() {
         // 退出登录逻辑
       }
